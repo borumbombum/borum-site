@@ -139,6 +139,7 @@
 .has-video,
 .has-audio {
     display: inline-block;
+    margin-left: 3px;
 }
 .has-video::before,
 .has-audio::before {

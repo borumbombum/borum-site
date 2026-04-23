@@ -56,10 +56,11 @@
         {% set includePost = false %}
         {% endif %}
 
-{% if includePost %}
+        {% if includePost %}
                 {% if currentYear != postYear %}{% set currentYear = postYear %}<h2 class="h4 font-italic font-weight-600">{{ postYear }}.</h2>
                 {% endif %}
-<li>
+                
+                <li>
                     <div>
                         <span>
                             {% if post.data.star %}<i class="star"></i>{% endif %}{% if post.data.videos %}<i class="has-video opacity-5"></i>{% endif %}{% if post.data.audios %}<i class="has-audio opacity-5"></i>{% endif %}
