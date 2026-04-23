@@ -12,10 +12,10 @@
         {% set includePost = false %}
         {% endif %}
 
-            {% if includePost %}
+{% if includePost %}
                 {% if currentYear != postYear %}{% set currentYear = postYear %}<h2 class="h4 font-italic font-weight-600">{{ postYear }}.</h2>
-            {% endif %}
-            <p {% if post.data.star %} class="star" {% endif %}>
+                {% endif %}
+                <p class="{% if post.data.star %}star {% endif %}{% if post.data.videos %}has-video{% endif %}">
                 {% if post.data.draft %}
                     <span class="pill bg-red font-weight-bold">draft</span>
                 {% endif %}
@@ -56,10 +56,10 @@
         {% set includePost = false %}
         {% endif %}
 
-            {% if includePost %}
+{% if includePost %}
                 {% if currentYear != postYear %}{% set currentYear = postYear %}<h2 class="h4 font-italic font-weight-600">{{ postYear }}.</h2>
-            {% endif %}
-            <li {% if post.data.star %} class="star" {% endif %}>
+                {% endif %}
+                <li class="{% if post.data.star %}star {% endif %}{% if post.data.videos %}has-video{% endif %}">
                 <div>
                     {% if post.data.draft %}
                         <span class="pill bg-red font-weight-bold">draft</span>
