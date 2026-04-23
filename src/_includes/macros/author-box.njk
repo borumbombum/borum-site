@@ -1,0 +1,35 @@
+{% macro box(fontSize="font-size:var(--fs-clamped-200);", extraClasses="", showDetails = false, hideShortName = false) %}
+    <div class="author-box{% if extraClasses %}{{ extraClasses }}{% endif %}">
+        {# <div>
+            <img
+                decoding="async"
+                width="100"
+                class="img-profile img-circular"
+                src="/assets/images/yet-another-guy.webp"
+                alt="profile-image"
+                loading="lazy">
+        </div> #}
+            <div>
+                {% if hideShortName === false %}
+                    {# <h2 class="h4 font-weight-600">{{ site.authorShort }}</h2> #}
+                    {% include "components/social-icons.njk" %}
+                {% endif %}
+                <p style="{{ fontSize }}">
+                    👋 ! Sé libre. Disfruta la vida. Prueba <a href="{{site.nostr}}" target="_blank" rel="noopener noreferrer" class="font-weight-400">Nostr</a>. Self-host. Usa BTC. Sé soberano. Empieza <a href="/" class="font-weight-400">aquí</a>.
+                </p>
+                {% if showDetails %}
+                    {# <dl
+                        class="mt-1">
+                        <dt>
+                            <a href="mailto:borumbombum@proton.me">nicolas@minimo.io</a>
+                            or @<a href="#" target="_blank">
+                                borum</a>
+                        </dt>
+
+                        <dt>São Paulo/Brazil / Uruguay (GMT-03:00)</dt>
+
+                    </dl> #}
+                {% endif %}
+            </div>
+        </div>
+    {% endmacro %}

@@ -1,0 +1,68 @@
+{% import "macros/author-box.njk" as author with context %}
+
+<footer class="footer wrapper">
+    {% if page.url !== "/" and page.url != "/work/" %}
+        {{ author.box() }}
+        {# <a
+            href="#" rel="nofollow noopener" target="_blank"
+            class="btn btn-sm btn-primary btn-cta mt-1">¡Encuéntrame en Nostr!</a> #}
+    {% endif %}
+
+    {% set defaultFooter = "borum - v" + pkg.version %}
+    {% if page.url === "/blog/" %}
+        {% set lastPostPublished = collections.posts | reverse %}
+        {% if collections.posts.length > 0 %}
+            <p style="font-size:var(--fs-clamped-200);">Último artículo publicado:
+            {{ lastPostPublished.slice(0,1)[0].date | postDate }}</p>
+        {% endif %}
+    {% elseif page.url === "/" or page.url === "/work/" %}
+
+        <p class="alert">{{ defaultFooter }}</p>
+
+        {% else %}
+        {# <p style="font-size:var(--fs-clamped-200);">Published on {{ date | postDate }}</p> #}
+    {% endif %}
+
+    {% if page.url != "/" and page.url != "/work/" %}
+        <p style="font-size:var(--fs-clamped-200);">{{ defaultFooter }}</p>
+    {% endif %}
+</footer>
+
+{# Test ld+json results here: https://search.google.com/test/rich-results/result  #}
+{% if page.url === "/" %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "{{ site.url }}#website",
+            "url": "{{ site.url }}",
+            "name": "Mínimo",
+            "description": "{{ site.homeDescription }}.",
+            "inLanguage": "es"
+        }
+        ]
+    }
+    </script>
+{% elif layout === "article" %}
+    <script type="application/ld+json">
+        {   "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "mainEntityOfPage": {
+                "@type": "WebPage"
+            },
+            "headline": "{{ title }}",
+            "image": [ "{{ site.url + image }}" ],
+            "datePublished": "{{ page.date.toISOString() }}",
+            {% if modified %}"dateModified": "{{ modified.toISOString() }}",{% endif %}
+        "author": [{
+            "@type": "Person",
+            "name": "{{ site.authorShort }}",
+            "image": "{{ site.url }}/assets/yet-another-guy.webp",
+            "jobTitle": "Desarrollador",
+            "url": "{{ site.url }}
+        " }] }
+    </script>
+
+{% endif %}

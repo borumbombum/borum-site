@@ -1,0 +1,172 @@
+/* nav */
+.header {
+    padding-bottom: 3rem;
+    margin-top: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.nav-buttons {
+    display: flex;
+    gap: 1.5rem;
+    line-height: 1rem;
+}
+.nav > * {
+    flex-basis: auto;
+}
+.nav {
+    position: fixed;
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    gap: var(--gap, 1.6rem);
+    justify-content: center;
+    align-items: center;
+    inset: 2rem;
+    z-index: 2000;
+    min-height: 26rem;
+    border-radius: 1rem;
+    max-width: 40rem;
+    margin: 0 auto;
+    background: var(--nav-backdrop);
+    border: var(--nav-border);
+}
+.nav a:not(.btn) {
+    display: flex;
+    font-weight: 300;
+    color: var(--foreground-text);
+    border: none;
+    line-height: 1;
+}
+.nav > li.active > a,
+.nav a:hover:not(.btn) {
+    font-weight: 600;
+    color: var(--nav-item-selected-color);
+    font-style: italic;
+}
+.nav a:hover:not(.btn) {
+    opacity: 1;
+    font-weight: 600;
+}
+.nav > li.active > a::before,
+.nav a:not(.primary-nav-icons > a):hover::before {
+    content: '~';
+    position: relative;
+    line-height: 1;
+    transform: translateX(-50%);
+    color: red;
+    font-weight: 600;
+}
+.nav a.btn:hover::before {
+    content: '';
+    display: none;
+}
+.primary-nav-icons {
+    display: flex;
+    gap: 1rem;
+}
+.primary-nav-icons a {
+    flex: 1 1 auto;
+}
+.primary-nav-icons a:hover {
+    opacity: 0.5;
+}
+
+.nav-toggle,
+.theme-toggle,
+.shortcuts-toggle,
+.share-toggle {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-repeat: no-repeat !important;
+}
+
+.nav-toggle {
+    background: url('data:image/svg+xml,<svg viewBox="0 0 400 400" fill="black" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="40" /><circle cx="200" cy="60" r="40" /><circle cx="340" cy="60" r="40" /><circle cx="60" cy="200" r="40" /><circle cx="200" cy="200" r="40" /><circle cx="340" cy="200" r="40" /><circle cx="60" cy="340" r="40" /><circle cx="200" cy="340" r="40" /><circle cx="340" cy="340" r="40" /></svg>')
+        no-repeat center;
+    z-index: 2000;
+}
+.cross {
+    background-image: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>');
+    background-size: 25px 25px;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+.shortcuts-toggle {
+    background-image: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 576 512"><path d="M64 64C28.7 64 0 92.7 0 128V384c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H64zm16 64h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zM64 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V240zm16 80h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V336c0-8.8 7.2-16 16-16zm80-176c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V144zm16 80h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V240c0-8.8 7.2-16 16-16zM160 336c0-8.8 7.2-16 16-16H400c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V336zM272 128h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zM256 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V240zM368 128h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zM352 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16V240zM464 128h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H464c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zM448 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H464c-8.8 0-16-7.2-16-16V240zm16 80h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H464c-8.8 0-16-7.2-16-16V336c0-8.8 7.2-16 16-16z"/></svg>');
+}
+.share-toggle {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 640 640"><path d="M371.8 82.4C359.8 87.4 352 99 352 112L352 192L240 192C142.8 192 64 270.8 64 368C64 481.3 145.5 531.9 164.2 542.1C166.7 543.5 169.5 544 172.3 544C183.2 544 192 535.1 192 524.3C192 516.8 187.7 509.9 182.2 504.8C172.8 496 160 478.4 160 448.1C160 395.1 203 352.1 256 352.1L352 352.1L352 432.1C352 445 359.8 456.7 371.8 461.7C383.8 466.7 397.5 463.9 406.7 454.8L566.7 294.8C579.2 282.3 579.2 262 566.7 249.5L406.7 89.5C397.5 80.3 383.8 77.6 371.8 82.6z"/></svg>')
+        no-repeat center;
+    background-size: 20px 20px;
+    z-index: 2000;
+}
+@supports (backdrop-filter: blur(0.5rem)) {
+    .nav {
+        backdrop-filter: blur(0.5rem);
+    }
+}
+/* .footer::before{
+    content:"";
+    display:block;
+    margin: 1rem auto;
+    width: 100%;
+    height:1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--foreground-text), rgba(0, 0, 0, 0));
+} */
+.footer {
+    margin: 1rem auto;
+    padding: 1rem 0;
+}
+.footer {
+    font-size: var(--fs-clamped-200);
+    text-align: center;
+}
+.author-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 2.1rem 0 0.5rem 0;
+}
+.author-box + p,
+.alert {
+    background: var(--high-background-gradient);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    width: max-content;
+    margin: 1rem auto;
+    font-size: var(--fs-clamped-200);
+}
+.author-box img {
+    max-width: 100px;
+}
+.author-box div:first-child {
+    flex: 0.5;
+    align-self: center;
+}
+.author-box > :last-child {
+    text-align: center;
+    flex: 2;
+    padding-inline: 3rem;
+}
+.author-box div:last-child a {
+    border-bottom: 0;
+}
+
+.author-box dl {
+    /* display:grid; */
+    /* grid-template-columns: max-content 1fr;
+    grid-gap: 5px 10px; */
+    font-size: var(--fs-clamped-200);
+}
+.author-box dt {
+    text-align: center;
+}
+.author-box dl dd {
+    text-align: center;
+}

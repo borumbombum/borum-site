@@ -1,0 +1,15 @@
+---
+pagination:
+    data: collections
+    size: 1
+    alias: tag
+    addAllPagesToCollections: true
+    layout: base
+permalink: /tag/{{ tag | slugify }}/
+eleventyComputed:
+    title: Tagged with "{{ tag }}"
+---
+{% import "macros/lists.njk" as list %}
+<div id="main" class="archive wrapper mt-2">
+    {{ list.archive(collections[tag]) }}
+</div>

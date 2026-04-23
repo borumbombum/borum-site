@@ -1,0 +1,16 @@
+---
+permalink: /
+title: Blog
+description: A collection of articles
+---
+{% import "macros/lists.njk" as list %}
+{% import "macros/tags.njk" as tags with context %}
+
+<div id="main" class="archive wrapper wrapper-wide mt-2">
+    {{ list.archive_with_dates(collections.posts) }}
+
+    <div class="text-center line-height-2 mt-3">
+        {{ tags.cloud() }}
+    </div>
+
+</div>

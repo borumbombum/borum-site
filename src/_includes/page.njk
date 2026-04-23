@@ -1,0 +1,13 @@
+---
+layout: base
+---
+
+{% import "macros/heros.njk" as hero with context %}
+
+{% if page.url === "/" %}
+    {{ hero.author() }}
+{% else %}
+    {{ hero.simple(title, description) }}
+{% endif %}
+
+{{ content | safe }}

@@ -1,0 +1,64 @@
+{% macro simple(title, description) %}
+    <div class="bg-grey">
+        <div class="wrapper pt-1">
+            {% include "components/nav.njk" %}
+        </div>
+        <div class="wrapper wrapper-wide text-center pb-2">
+            <main>
+                <h1 class="font-italic font-weight-600">{{ title | safe }}</h1>
+                <h2 class="fs-400 line-height-1-2">{{ description | safe }}</h2>
+            </main>
+        </div>
+    </div>
+{% endmacro %}
+{% macro article(title, description, image, imageCaption) %}
+    <div class="wrapper pt-1">
+        {% include "components/nav.njk" %}
+    </div>
+    <div class="wrapper wrapper-wide text-center pb-2">
+        <main id="main">
+            <h1 class="font-italic font-weight-600 mt-0">{{ title }}</h1>
+            <h2 class="fs-400 line-height-1-2">{{ description }}</h2>
+            <p
+                style="font-size:var(--fs-clamped-200)" class="font-italic">
+                {# {{ date | postDate  }} - <a href="/blog/">Back to archive</a> #}
+                {{ date | postDate }} - {{ content | emojiReadTime }}
+            </p>
+        </main>
+        {% if image %}
+            <figure class="pt-2">
+                {% set imageAlt = imageCaption or title %}
+                <img src="{{ image }}" alt="{{ imageAlt | slugify }}" class="img-rounded img-rotate">
+                    {% if imageCaption %}
+                        <figcaption>{{ imageCaption }}</figcaption>
+                    {% endif %}
+                </figure>
+            {% endif %}
+        </div>
+    {% endmacro %}
+
+
+
+    {% macro author() %}
+        <div class="bg-grey bg--angled">
+            <div class="wrapper wrapper-wide pt-1 pb-2">
+                {% include "components/nav.njk" %}
+                <main id="main" class="Xwrapper Xwrapper-wide fs-400">
+
+                        <h2 class="h3 font-weight-400 mt-3">
+                            <span style="display:inline-block" class="hey-hand">🥔</span>
+                            <i>Archivo</i>
+                        </h2>
+
+                        <div class="read-more-text">
+                            <hr/>
+                            <p>
+                                This website was built with ❤️ using
+                                <strong>11ty</strong>.
+                            </p>
+                        </div>
+                
+                </main>
+            </div>
+        </div>
+    {% endmacro %}

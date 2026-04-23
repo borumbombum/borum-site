@@ -1,0 +1,13 @@
+User-agent: *
+Disallow:
+
+# banned bots.
+User-agent: Vegi bot
+User-agent: seostats
+User-agent: MauiBot
+User-agent: TechSEO360
+User-agent: AhrefsBot
+User-agent: MJ12bot
+User-agent: dotbot
+Crawl-delay: 20
+Disallow: /
