@@ -18,7 +18,7 @@ module.exports = function (eleventyConfig) {
     }
     eleventyConfig.addPassthroughCopy('src/assets/gpxs')
     eleventyConfig.addPassthroughCopy('src/assets/images')
-    eleventyConfig.addPassthroughCopy('src/assets/gallery')
+    // eleventyConfig.addPassthroughCopy('src/assets/gallery')
     eleventyConfig.addPassthroughCopy('src/assets/audios')
     eleventyConfig.addPassthroughCopy('src/assets/js')
     eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' })
@@ -101,20 +101,20 @@ module.exports = function (eleventyConfig) {
     })
 
     // add the photos collection from assets/gallery
-    eleventyConfig.addGlobalData('galleryImages', () => {
-        const directoryPath = path.join(__dirname, 'src/assets/gallery')
+    // eleventyConfig.addGlobalData('galleryImages', () => {
+    //     const directoryPath = path.join(__dirname, 'src/assets/gallery')
 
-        // Read all files in the directory
-        const files = fs.readdirSync(directoryPath)
-        return files.map((file) => {
-            let fileExt = path.extname(file)
-            if (fileExt != '.webp') return false
-            return {
-                name: file,
-                path: path.join('/assets/gallery', file), // Adjust this path as needed
-            }
-        })
-    })
+    //     // Read all files in the directory
+    //     const files = fs.readdirSync(directoryPath)
+    //     return files.map((file) => {
+    //         let fileExt = path.extname(file)
+    //         if (fileExt != '.webp') return false
+    //         return {
+    //             name: file,
+    //             path: path.join('/assets/gallery', file), // Adjust this path as needed
+    //         }
+    //     })
+    // })
 
     return {
         dir: {
