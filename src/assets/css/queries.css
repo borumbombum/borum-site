@@ -42,6 +42,14 @@
     ul.archive-with-dates .archive-inline-date {
         display: inline-block;
     }
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (min-width: 769px) {
+    .video-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 @media (max-width: 1000px) {
     .project:not(.project-single) {
