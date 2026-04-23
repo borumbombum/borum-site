@@ -1,4 +1,7 @@
 /* media queries */
+.video-grid {
+    display: grid;
+}
 @media (max-width: 768px) {
     :root {
         --wrapper-gutter: 1.5rem;
