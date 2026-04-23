@@ -6,9 +6,9 @@
     :root {
         --wrapper-gutter: 1.5rem;
     }
-    .star::before {
+    /* .star::before {
         display: none;
-    }
+    } */
     .d-none-mobile {
         display: none;
     }
@@ -52,6 +52,9 @@
 @media (min-width: 769px) {
     .video-grid {
         grid-template-columns: 1fr 1fr;
+    }
+    ul.archive-with-dates li > div {
+        flex-wrap: nowrap !important;
     }
 }
 @media (max-width: 1000px) {

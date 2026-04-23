@@ -15,7 +15,7 @@
 {% if includePost %}
                 {% if currentYear != postYear %}{% set currentYear = postYear %}<h2 class="h4 font-italic font-weight-600">{{ postYear }}.</h2>
                 {% endif %}
-                <p class="{% if post.data.star %}star {% endif %}{% if post.data.videos %}has-video{% endif %}">
+                <p>{% if post.data.star %}<i class="star"></i>{% endif %}{% if post.data.videos %}<i class="has-video opacity-50"></i>{% endif %}{% if post.data.audios %}<i class="has-audio opacity-50"></i>{% endif %}
                 {% if post.data.draft %}
                     <span class="pill bg-red font-weight-bold">draft</span>
                 {% endif %}
@@ -59,40 +59,34 @@
 {% if includePost %}
                 {% if currentYear != postYear %}{% set currentYear = postYear %}<h2 class="h4 font-italic font-weight-600">{{ postYear }}.</h2>
                 {% endif %}
-                <li class="{% if post.data.star %}star {% endif %}{% if post.data.videos %}has-video{% endif %}">
-                <div>
-                    {% if post.data.draft %}
-                        <span class="pill bg-red font-weight-bold">draft</span>
-                    {% endif %}
-
-                    {#<a href="{{ post.url }}" style="font-weight:200;">
-                        #{% if count
-                            .toString()
-                            .length < 2 %}0{%- endif %}
-                        {{- count }} - {{ post.data.title or "Home" }}
-                    </a>#}
-
-                    <a href="{{ post.url }}" style="font-weight:200;">
-                        {{ post.data.title or "Home" }}
-                    </a>
-
-                    {% if showTags %}
-                        {% set count = 0 %}
-                        {% for tag in post.data.tags %}
-                            {% if tag != "posts" and count == 0 %}
-                                <a title="Link to tag `{{ tag | escape }}`" href="/tag/{{ tag | slugify }}/">
-                                    <span class="pill" style="font-size: 0.65em;">{{ tag }}</span>
-                                </a>
-                                {% set count = 1 %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                    <span class="archive-inline-date opacity-5">{{ post.data.date | postDateSmall }}</span>
-                </div>
-                <div class="opacity-5">
-                    {{ post.data.date | postDateSmall }}
-                </div>
-            </li>
+<li>
+                    <div>
+                        <span>
+                            {% if post.data.star %}<i class="star"></i>{% endif %}{% if post.data.videos %}<i class="has-video opacity-5"></i>{% endif %}{% if post.data.audios %}<i class="has-audio opacity-5"></i>{% endif %}
+                        </span>                    
+                        {% if post.data.draft %}
+                            <span class="pill bg-red font-weight-bold">draft</span>
+                        {% endif %}
+                        <a href="{{ post.url }}" style="font-weight:200;">
+                            {{ post.data.title or "Home" }}
+                        </a>
+                        {% if showTags %}
+                            {% set count = 0 %}
+                            {% for tag in post.data.tags %}
+                                {% if tag != "posts" and count == 0 %}
+                                    <a title="Link to tag `{{ tag | escape }}`" href="/tag/{{ tag | slugify }}/">
+                                        <span class="pill" style="font-size: 0.65em;">{{ tag }}</span>
+                                    </a>
+                                    {% set count = 1 %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        <span class="archive-inline-date opacity-5">{{ post.data.date | postDateSmall }}</span>
+                    </div>
+                    <div class="opacity-5">
+                        {{ post.data.date | postDateSmall }}
+                    </div>
+                </li>
         {% endif %}
         {% set count = count - 1 %}
     {% endfor %}

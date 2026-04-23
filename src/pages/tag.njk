@@ -7,9 +7,9 @@ pagination:
     layout: base
 permalink: /tag/{{ tag | slugify }}/
 eleventyComputed:
-    title: Tagged with "{{ tag }}"
+    title: Archivado en "{{ tag }}"
 ---
 {% import "macros/lists.njk" as list %}
-<div id="main" class="archive wrapper mt-2">
-    {{ list.archive(collections[tag]) }}
+<div id="main" class="archive wrapper wrapper-wide mt-2">
+    {{ list.archive_with_dates(collections[tag]) }}
 </div>

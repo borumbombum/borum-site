@@ -7,44 +7,8 @@ layout: base
 {{ hero.article(title, description, image, imageCaption) }}
 
 <article class="article">
-    {% if role %}
-        <div class="wrapper project project-single">
-            <dl class="project-meta mt-1">
-                <dt>Rol</dt>
-                <dd>{{ role }}</dd>
-
-                <dt>Período</dt>
-                <dd>{{ period }}</dd>
-
-                <dt>Estado</dt>
-                <dd>{{ status }}</dd>
-
-                <dt>Pila</dt>
-                <dd>{{ stack }}</dd>
-            </dl>         
-        </div> 
-
-        {# Visit button #}
-        {% if url %}
-            <div class="wrapper ">
-                {% set project_cta_text = "" %}
-                {% set project_cta_url = url %}
-
-                {% if url_button %}
-                    {% set project_cta_text = url_button %}
-                {% else %}
-                    {% set project_cta_text = "Visitar" %}
-                {% endif %}
-                
-                <a href="{{ project_cta_url }}" class="btn btn-sm btn-primary btn-cta fit-content mt-1" {% if url %} target="_blank" rel="noopener noreferrer" {% endif %}>{{ project_cta_text }}</a>
-            </div>
-        {% endif %}
-        
-    {% endif %}
 
     {% templatey content %}
-
-
 
     {# {{ content | safe  }} #}
 </article>

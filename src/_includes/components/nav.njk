@@ -20,6 +20,12 @@
             <span class="sr-only">Compartir</span>
         </button>
 
+        {% if page.url != "/" %}
+            <a href="/" class="home-toggle no-underline" title="Inicio">
+                <span class="sr-only">Inicio</span>
+            </a>
+        {% endif %}
+
         {# Menu #}
         <button class="nav-toggle d-none" aria-controls="primary-nav" aria-haspopup="true" aria-expanded="false" title="Menu">
             <span class="sr-only">Menu</span>

@@ -165,6 +165,10 @@
     text-align: left;
 }
 
+.no-underline {
+    text-decoration: none;
+    border: 0;
+}
 .text-underline {
     text-decoration: underline;
 }
