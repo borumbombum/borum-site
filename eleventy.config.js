@@ -19,6 +19,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy('src/assets/gpxs')
     eleventyConfig.addPassthroughCopy('src/assets/images')
     eleventyConfig.addPassthroughCopy('src/assets/gallery')
+    eleventyConfig.addPassthroughCopy('src/assets/audios')
     eleventyConfig.addPassthroughCopy('src/assets/js')
     eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' })
     eleventyConfig.addPassthroughCopy('src/.well-known') // for nostr
@@ -36,7 +37,7 @@ module.exports = function (eleventyConfig) {
         }
     })
 
-eleventyConfig.addFilter('postDate', (dateString) => {
+    eleventyConfig.addFilter('postDate', (dateString) => {
         dateObj = new Date(dateString)
         let monthName = dateObj.toLocaleString('es', { month: 'long' })
         let dayNumber = dateObj.getDate()
@@ -44,14 +45,14 @@ eleventyConfig.addFilter('postDate', (dateString) => {
         return `${monthName.charAt(0).toUpperCase() + monthName.slice(1)} ${dayNumber}, ${yearNumber}`
     })
 
-eleventyConfig.addFilter('postDateSmall', (dateString) => {
+    eleventyConfig.addFilter('postDateSmall', (dateString) => {
         dateObj = new Date(dateString)
         let monthName = dateObj.toLocaleString('es', { month: 'long' })
         let dayNumber = dateObj.getDate()
         return `${monthName.charAt(0).toUpperCase() + monthName.slice(1)} ${dayNumber}`
     })
 
-eleventyConfig.addFilter('rideDate', (dateString) => {
+    eleventyConfig.addFilter('rideDate', (dateString) => {
         dateObj = new Date(dateString)
         let monthNumber = dateObj.getMonth()
         if (monthNumber < 10) monthNumber = '0' + monthNumber
