@@ -1,0 +1,12 @@
+{% macro audioPlayer(audioSrc) %}
+<div class="audio-player">
+    <audio src="{{ audioSrc }}"></audio>
+    <button class="audio-play-btn" aria-label="Reproducir">▶</button>
+    <div class="audio-progress-container">
+        <div class="audio-progress"></div>
+    </div>
+    <span class="audio-time-current">0:00</span>
+    <span class="audio-time-separator">/</span>
+    <span class="audio-time-duration">--:--</span>
+</div>
+{% endmacro %}

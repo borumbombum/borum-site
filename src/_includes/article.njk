@@ -1,26 +1,18 @@
 ---
 layout: base
+js: /assets/js/audio-player.js
 ---
 
 {% import "macros/heros.njk" as hero with context %}
+{% import "macros/audio-player.njk" as audioPlayer with context %}
 
 {{ hero.article(title, description, image, imageCaption) }}
 
-<article class="article">
-
-    {% templatey content %}
-
-    {# {{ content | safe  }} #}
-</article>
-
-<div class="tags wrapper mt-2">
-    {% for tag in tags %}
-        {% if tag != "posts" %}
-            <a href="/tag/{{ tag | slugify }}/"><span class="pill">{{ tag }}</span></a>
-        {% endif %}
-    {% endfor %}
-    <p class="mt-1"><a href="/">← Volver al archivo</a></p>
+{% if audios %}
+<div class="wrapper" style="margin-top: -1rem;">
+{{ audioPlayer.audioPlayer(audios[0]) }}
 </div>
+{% endif %}
 
 {% if videos %}
 <div class="wrapper mt-2">
@@ -39,3 +31,19 @@ layout: base
     </div>
 </div>
 {% endif %}
+
+<article class="article">
+
+    {% templatey content %}
+
+    {# {{ content | safe  }} #}
+</article>
+
+<div class="tags wrapper mt-2">
+    {% for tag in tags %}
+        {% if tag != "posts" %}
+            <a href="/tag/{{ tag | slugify }}/"><span class="pill">{{ tag }}</span></a>
+        {% endif %}
+    {% endfor %}
+    <p class="mt-1"><a href="/">← Volver al archivo</a></p>
+</div>
