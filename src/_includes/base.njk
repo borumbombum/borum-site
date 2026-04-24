@@ -38,6 +38,8 @@
         {% endif %}
         <link href="{% if runMode != 'build' %}/assets/css{% endif %}/style.css" rel="stylesheet"/>
         <script src="{% if runMode != 'build' %}/assets/js{% endif %}/bundle.js" defer></script>
+        <script src="{% if runMode != 'build' %}/assets/js{% endif %}/audio-player.js" defer></script>
+
         {# Alpine, keep it after bundle, in order to execute second after DOMContentLoad #}
         {% if alpine === true %}
             <script src="https://unpkg.com/alpinejs@3.13.7/dist/cdn.min.js" defer></script>

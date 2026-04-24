@@ -1,6 +1,6 @@
 {
     "name": "borum-site",
-    "version": "0.2.11",
+    "version": "0.2.12",
     "description": "A borum archive",
     "scripts": {
         "dev": "NODE_ENV=dev npm-run-all clean-build --parallel watch:*",
