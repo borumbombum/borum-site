@@ -19,7 +19,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy('src/assets/gpxs')
     eleventyConfig.addPassthroughCopy('src/assets/images')
     // eleventyConfig.addPassthroughCopy('src/assets/gallery')
-    eleventyConfig.addPassthroughCopy('src/assets/audios')
+    // eleventyConfig.addPassthroughCopy('src/assets/audios')
     eleventyConfig.addPassthroughCopy('src/assets/js')
     eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' })
     eleventyConfig.addPassthroughCopy('src/.well-known') // for nostr

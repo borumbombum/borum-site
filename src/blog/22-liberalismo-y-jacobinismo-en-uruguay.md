@@ -10,7 +10,7 @@ videos:
     - https://www.youtube.com/watch?v=drwu6gVARgc
     - https://www.youtube.com/watch?v=xTlamvJJj8k
 audios:
-    - /assets/audios/ljub.mp3
+    - https://s3.cubiq.lat/borum/ljub.mp3
 tags:
     - politica
     - pablo da silveira
