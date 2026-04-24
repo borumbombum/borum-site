@@ -343,3 +343,77 @@ const displayGpx = function (elt, filePath) {
         })
         .addTo(map)
 }
+
+// Author box quote rotation
+;(function () {
+    const quote = $('.author-box-quote')
+    if (!quote) return
+
+    const quoteText = $('.author-box-quote-text')
+    const quoteCounter = $('.author-box-quote-counter')
+    if (!quoteText || !quoteCounter) return
+
+    const principles = window.principles
+    if (!principles || !principles.length) return
+
+    let currentIndex = Math.floor(Math.random() * principles.length)
+    let secondsLeft = 5
+
+    // Configuration: change this number to adjust when overlay appears (chars before 4 lines ~200)
+    const LONG_QUOTE_THRESHOLD = 200
+
+    // Set initial text (first principle)
+    quoteText.textContent = principles[currentIndex]
+    quoteCounter.textContent = secondsLeft + ' seg'
+
+    // Check if quote is longer than threshold
+    if (principles[currentIndex].length > LONG_QUOTE_THRESHOLD) {
+        quoteText.classList.add('author-box-quote-long')
+    }
+
+    function updateCounter() {
+        secondsLeft--
+        if (secondsLeft <= 0) {
+            rotateQuote()
+            secondsLeft = 5
+        }
+        quoteCounter.textContent = secondsLeft + ' seg'
+    }
+
+    function rotateQuote() {
+        quote.classList.remove('fade-in')
+        quote.classList.add('fade-out')
+
+        quote.addEventListener(
+            'transitionend',
+            function () {
+currentIndex = (currentIndex + 1) % principles.length
+                quoteText.textContent = principles[currentIndex]
+                quoteCounter.textContent = secondsLeft + ' seg'
+
+                // Check if new quote exceeds threshold
+                if (principles[currentIndex].length > LONG_QUOTE_THRESHOLD) {
+                    quoteText.classList.add('author-box-quote-long')
+                } else {
+                    quoteText.classList.remove('author-box-quote-long')
+                }
+
+                requestAnimationFrame(function () {
+                    quote.classList.remove('fade-out')
+                    quote.classList.add('fade-in')
+                })
+            },
+            { once: true }
+        )
+    }
+
+    let intervalId = setInterval(updateCounter, 1000)
+
+    quote.addEventListener('mouseenter', function () {
+        clearInterval(intervalId)
+    })
+
+    quote.addEventListener('mouseleave', function () {
+        intervalId = setInterval(updateCounter, 1000)
+    })
+})()

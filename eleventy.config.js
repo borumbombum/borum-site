@@ -79,6 +79,12 @@ module.exports = function (eleventyConfig) {
         return htmlContent.replace(/<iframe\b[^>]*>(.*?)<\/iframe>/gi, '')
     })
 
+    // JSON encode for inline JS data attributes
+    eleventyConfig.addFilter('jsonEncode', (array) => {
+        if (!Array.isArray(array) || array.length === 0) return '[]'
+        return JSON.stringify(array)
+    })
+
     // base plugin
     // eleventyConfig.addPlugin(EleventyHtmlBasePlugin)
     // reading time

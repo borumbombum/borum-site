@@ -219,6 +219,66 @@ ul.archive-with-dates .archive-inline-date {
     }
 }
 
+/* author-box quote rotation */
+.author-box-quote {
+    transition:
+        opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+        transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: opacity, transform;
+}
+.author-box-quote.fade-out {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.95);
+}
+.author-box-quote.fade-in {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+.author-box-quote-counter {
+    font-size: 0.8em;
+    opacity: 0.7;
+    margin-left: 0.5em;
+    vertical-align: middle;
+}
+.author-box-quote-text::before,
+.author-box-quote-text::after {
+    content: '"';
+    font-size: 1em;
+}
+.author-box-quote-text {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.author-box-quote-text.author-box-quote-long {
+    position: relative;
+    max-height: 4.5em;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.author-box-quote-text.author-box-quote-long:hover {
+    max-height: 20em;
+}
+.author-box-quote-text.author-box-quote-long::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    display: block;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+.author-box-quote-text.author-box-quote-long:hover::after {
+    opacity: 0;
+}
+.author-box-quote-text.author-box-quote-long:hover::after {
+    opacity: 0;
+}
+
 @keyframes launch {
     0% {
         transform: translateX(-50%) translateY(0) rotateZ(0);
