@@ -1,6 +1,6 @@
 {
     "name": "borum-site",
-    "version": "0.2.10",
+    "version": "0.2.11",
     "description": "A borum archive",
     "scripts": {
         "dev": "NODE_ENV=dev npm-run-all clean-build --parallel watch:*",
@@ -12,7 +12,8 @@
         "watch:postcss": "lightningcss --minify --bundle --targets '>= 0.25%' src/assets/css/style.css -d _site",
         "build:postcss": "lightningcss --minify --bundle --targets '>= 0.25%' src/assets/css/style.css -d _site",
         "minify:html": "html-minifier --input-dir _site --output-dir _site --file-ext html --remove-comments --collapse-whitespace",
-        "minify:js": "terser _site/assets/js/bundle.js --toplevel -o _site/bundle.js"
+        "minify:js": "terser _site/assets/js/bundle.js --toplevel -o _site/bundle.js",
+        "minify:js-audio": "terser _site/assets/js/audio-player.js --toplevel -o _site/audio-player.js"
     },
     "repository": {
         "type": "git",
