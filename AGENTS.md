@@ -82,3 +82,7 @@ tags:
 - CSS via data URIs for inline icons.
 - Use existing CSS patterns before adding new.
 - Test responsive before commit.
+
+## Omarchy
+
+- `mcli` — Run command palette
