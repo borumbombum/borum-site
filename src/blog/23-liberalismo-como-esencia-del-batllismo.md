@@ -7,6 +7,8 @@ star: true
 videos:
     - https://www.youtube.com/watch?v=GVnpAD3r9ZU
     - https://www.youtube.com/watch?v=awyQ5Mu5LHQ
+audios:
+    - https://s3.cubiq.lat/borum/batllismo_liberalismo.mp3
 tags:
     - politica
     - batllismo
